@@ -14,11 +14,18 @@ const GoalInput = props => {
     const [enterGoals, SetenterGoals] = useState('');
 
     const onChangeInput = (enterText) => {
-        enterText === null ? Alert.alert(`Please Fill Todos`) : SetenterGoals(enterText);
+        SetenterGoals(enterText);
     }
 
     const onHandleAddButton = () => {
-        props.onAddGoal(enterGoals)
+        if (enterGoals == '') {
+            Alert.alert(`Not Invalid`)
+            return
+        }
+        else {
+            props.onAddGoal(enterGoals)
+            Alert.alert(`Add Todos Sucess`)
+        }
         SetenterGoals('')
     }
 
@@ -37,7 +44,7 @@ const GoalInput = props => {
                         <Button title='ADD' onPress={onHandleAddButton} />
                     </View>
                     <View style={styles.button}>
-                    <Button title='CANCLE' color='red' onPress={props.onCancel} />
+                        <Button title='CANCLE' color='red' onPress={props.onCancel} />
                     </View>
                 </View>
             </View>
