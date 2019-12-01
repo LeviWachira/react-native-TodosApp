@@ -18,15 +18,9 @@ const GoalInput = props => {
     }
 
     const onHandleAddButton = () => {
-        if (enterGoals == '') {
-            Alert.alert(`Not Invalid`)
-            return
-        }
-        else {
-            props.onAddGoal(enterGoals)
-            Alert.alert(`Add Todos Sucess`)
-        }
-        SetenterGoals('')
+        enterGoals == '' ?  Alert.alert(`NOT INVALID`)  : props.onAddGoal(enterGoals) && Alert.alert(`ADD TODOS SUCCESS`);
+        
+     SetenterGoals('');
     }
 
     return (
